@@ -7,7 +7,8 @@ cd IotBackend
 
 ## Virtual enviromnent setup:
 
-  1. create virtual env ---> python3 -m venv venv
+  1. create virtual env 
+      - python3 -m venv venv
   2. activate virtual environment:
       - source venv/bin/activate  # For macOS/Linux
       - venv\Scripts\activate     # For Windows
