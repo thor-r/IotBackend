@@ -8,9 +8,8 @@ from sqlalchemy.orm import Session
 
 app = FastAPI()
 
-SAMPLE_RATE = 4000  # Sample rate for the audio data
+SAMPLE_RATE = 4000 
 
-# Dependency to get the database session
 def get_db():
     db = SessionLocal()
     try:
@@ -38,7 +37,7 @@ async def process_audio(request: ProcessAudioRequest, db: Session = Depends(get_
                     detail=f"Invalid audio length: {length_seconds:.2f}s"
                 )
 
-            # Save metadata to the database
+            # Saving metadata to the database
             db_metadata = AudioMetadata(
                 session_id=request.session_id,
                 timestamp=request.timestamp,
@@ -59,7 +58,6 @@ async def process_audio(request: ProcessAudioRequest, db: Session = Depends(get_
                 status_code=400,
                 detail=f"Error processing file {audio_file.file_name}: {str(e)}"
             )
-
 
     return ProcessAudioResponse(
         status="success",
